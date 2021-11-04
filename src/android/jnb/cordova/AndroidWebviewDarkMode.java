@@ -10,6 +10,7 @@ import org.apache.cordova.engine.SystemWebView;
 import static org.apache.cordova.CordovaActivity.TAG;
 import static androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF;
 import static androidx.webkit.WebSettingsCompat.FORCE_DARK_ON;
+import static androidx.webkit.WebSettingsCompat.DARK_STRATEGY_WEB_THEME_DARKENING_ONLY;
 
 public class AndroidWebviewDarkMode extends CordovaPlugin {
 
@@ -44,6 +45,9 @@ public class AndroidWebviewDarkMode extends CordovaPlugin {
                     WebSettingsCompat.setForceDark(settings, FORCE_DARK_OFF);
                     break;
             }
+        }
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK_STRATEGY)){
+            WebSettingsCompat.setForceDarkStrategy(settings, DARK_STRATEGY_WEB_THEME_DARKENING_ONLY);
         }
     }
 }
